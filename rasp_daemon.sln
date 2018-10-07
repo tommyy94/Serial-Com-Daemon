@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rasp_daemon", "rasp_daemon\rasp_daemon.vcxproj", "{B30DE268-7DEF-400B-8D8E-1E42E125A8A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|VisualGDB = Debug|VisualGDB
+		Release|VisualGDB = Release|VisualGDB
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B30DE268-7DEF-400B-8D8E-1E42E125A8A7}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{B30DE268-7DEF-400B-8D8E-1E42E125A8A7}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{B30DE268-7DEF-400B-8D8E-1E42E125A8A7}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{B30DE268-7DEF-400B-8D8E-1E42E125A8A7}.Release|VisualGDB.Build.0 = Release|VisualGDB
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8E8B701-9CF3-414D-BF43-A564565FA3A6}
+	EndGlobalSection
+EndGlobal
