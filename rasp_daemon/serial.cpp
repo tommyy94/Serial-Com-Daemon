@@ -1,12 +1,12 @@
 #include "serial.h"
 
 
-int open_port(void)
+int Serial::open_port(void)
 {
-	int fd = open("/dev/ttyAMA0", O_RDWR);
+	int fd = open(dev_tty, O_RDWR);
 	if (fd == -1)
 	{
-		perror("/dev/ttyAMA0");
+		perror(dev_tty);
 		exit(EXIT_FAILURE);
 	}
 	
@@ -14,7 +14,7 @@ int open_port(void)
 }
 
 
-void serial_init(int fd)
+void Serial::con_init(int fd)
 {
 	struct termios tios;
 	tcgetattr(fd, &tios);

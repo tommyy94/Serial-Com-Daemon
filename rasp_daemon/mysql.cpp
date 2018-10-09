@@ -1,40 +1,36 @@
 #include "mysql.h"
 
 
-
-
-Database::Database()
+Database::Database(std::string host, std::string user, std::string pw, std::string db)
 {
-	m_driver = get_driver_instance();
+	m_host = host;
+	m_user = user;
+	m_pw = pw;
+	m_db = db;
 }
 
 
-Database::~Database()
-{
-	delete m_stmt;
-	delete m_con;
-}
-
-
-void Database::con_init()
+void Database::con_init(void)
 {
 	try
 	{
 		/* Create a connection */
-		m_con = m_driver->connect("tcp://127.0.0.1:3306", "root", "root");
+		m_driver = get_driver_instance();
+		m_con = m_driver->connect(m_host, m_user, m_pw);
 		/* Connect to the MySQL test database */
-		m_con->setSchema("name");
+		m_con->setSchema(m_db);
 	}
 	catch (sql::SQLException &e)
 	{
 		exception_handler(e);
 	}
-	
 }
 
 
 void Database::send_query(std::string query)
 {
+	con_init();
+	
 	try
 	{
 		m_stmt = m_con->createStatement();
@@ -44,6 +40,9 @@ void Database::send_query(std::string query)
 	{
 		exception_handler(e);
 	}
+	
+	delete m_stmt;
+	delete m_con;
 }
 
 

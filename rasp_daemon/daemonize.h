@@ -7,4 +7,4 @@
 #include <sys/stat.h>
 #include <syslog.h>
 
-void daemonize();
+void daemonize(void);

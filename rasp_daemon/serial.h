@@ -8,7 +8,16 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#define BUFFLEN 9
 
-int open_port(void);
-void serial_init(int fd);
+class Serial
+{
+private:
+	const char *dev_tty = "/dev/ttyAMA0";
+	
+public:
+	constexpr static int BUFFLEN = 32;
+	char buf[BUFFLEN];
+	
+	int open_port(void);
+	void con_init(int fd);
+};

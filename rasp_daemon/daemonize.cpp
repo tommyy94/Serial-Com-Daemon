@@ -1,7 +1,7 @@
 #include "daemonize.h"
 
 
-void daemonize()
+void daemonize(void)
 {
 	pid_t pid;
 

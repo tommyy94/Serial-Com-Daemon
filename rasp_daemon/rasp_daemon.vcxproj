@@ -54,6 +54,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="daemonize.h" />
+    <ClInclude Include="datetime.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="mysql.h" />
     <ClInclude Include="serial.h" />
@@ -63,6 +64,7 @@
   </ImportGroup>
   <ItemGroup>
     <ClCompile Include="daemonize.cpp" />
+    <ClCompile Include="datetime.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mysql.cpp" />
     <ClCompile Include="serial.cpp" />
