@@ -38,9 +38,6 @@
     <ClInclude Include="mysql.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="datetime.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="daemonize.cpp">
@@ -53,9 +50,6 @@
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="mysql.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="datetime.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>

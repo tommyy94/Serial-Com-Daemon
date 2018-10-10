@@ -14,10 +14,10 @@ private:
 	sql::Connection *m_con;
 	sql::Statement *m_stmt;
 	
-	std::string m_host = "tcp://127.0.0.1:3306";
-	std::string m_user = "root";
-	std::string m_pw = "";
-	std::string m_db = "home_automation";
+	std::string m_host;
+	std::string m_user;
+	std::string m_pw;
+	std::string m_db;
 	
 	void con_init(void);
 	void exception_handler(sql::SQLException &e);
