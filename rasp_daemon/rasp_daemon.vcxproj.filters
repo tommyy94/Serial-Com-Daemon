@@ -26,30 +26,36 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="daemonize.h">
+    <ClInclude Include="Inc\daemonize.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="main.h">
+    <ClInclude Include="Inc\main.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="serial.h">
+    <ClInclude Include="Inc\mysql.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="mysql.h">
+    <ClInclude Include="Inc\serial.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\temperature.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="daemonize.cpp">
+    <ClCompile Include="Src\daemonize.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="Src\main.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="serial.cpp">
+    <ClCompile Include="Src\mysql.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="mysql.cpp">
+    <ClCompile Include="Src\serial.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\temperature.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>

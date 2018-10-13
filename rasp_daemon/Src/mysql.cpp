@@ -14,10 +14,10 @@ void Database::con_init(void)
 {
 	try
 	{
-		/* Create a connection */
+		// Create a connection
 		m_driver = get_driver_instance();
 		m_con = m_driver->connect(m_host, m_user, m_pw);
-		/* Connect to the MySQL test database */
+		// Connect to the MySQL database
 		m_con->setSchema(m_db);
 	}
 	catch (sql::SQLException &e)
