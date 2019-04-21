@@ -38,7 +38,10 @@
     <ClInclude Include="Inc\serial.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="Inc\temperature.h">
+    <ClInclude Include="rf_module.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="io.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -55,7 +58,10 @@
     <ClCompile Include="Src\serial.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\temperature.cpp">
+    <ClCompile Include="rf_module.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="io.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>

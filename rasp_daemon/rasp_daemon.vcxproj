@@ -43,7 +43,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>Inc;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Inc;.;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
@@ -69,13 +69,15 @@
     <ClInclude Include="Inc\main.h" />
     <ClInclude Include="Inc\mysql.h" />
     <ClInclude Include="Inc\serial.h" />
-    <ClInclude Include="Inc\temperature.h" />
+    <ClInclude Include="io.h" />
+    <ClInclude Include="rf_module.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="io.cpp" />
+    <ClCompile Include="rf_module.cpp" />
     <ClCompile Include="Src\daemonize.cpp" />
     <ClCompile Include="Src\main.cpp" />
     <ClCompile Include="Src\mysql.cpp" />
     <ClCompile Include="Src\serial.cpp" />
-    <ClCompile Include="Src\temperature.cpp" />
   </ItemGroup>
 </Project>

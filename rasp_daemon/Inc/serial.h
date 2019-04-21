@@ -14,12 +14,14 @@ class Serial
 private:
 	const char *dev_tty = "/dev/ttyAMA0";
 	int m_baud_rate;
+    int m_fd;
 	
 public:
-	constexpr static int BUFFLEN = 32;
+	constexpr static int BUFFLEN = 4;
 	char m_buf[BUFFLEN] = "";
 	
 	Serial(int baud_rate);
-	int open_port(void);
-	void con_init(int fd);
+	void OpenPort(void);
+	void Init(void);
+    int fd(void) const { return m_fd; }
 };

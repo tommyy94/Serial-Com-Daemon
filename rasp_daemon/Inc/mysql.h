@@ -6,6 +6,8 @@
 #include <cppconn/statement.h>
 #include <iostream>
 
+#include <boost/format.hpp>
+
 
 class Database
 {
@@ -19,10 +21,11 @@ private:
 	std::string m_pw;
 	std::string m_db;
 	
-	void con_init(void);
-	void exception_handler(sql::SQLException &e);
+	void Init(void);
+	void ExceptionHandler(sql::SQLException &e);
+    void FormQuery(void);
 	
 public:
 	Database(std::string host, std::string user, std::string pw, std::string db);
-	void send_query(std::string query);
+	void SendQuery(std::string query);
 };

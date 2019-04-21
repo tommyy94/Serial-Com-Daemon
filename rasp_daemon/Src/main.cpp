@@ -1,43 +1,46 @@
 #include "main.h"
 
 
+// TODO: Figure out what to do with this
+volatile unsigned *gpio;
+
+
 int main(void)
 {
-	Serial serial(B9600);
-	Database sql("tcp://192.168.10.48:3306", "root", "", "home_automation");
-	Temperature temp;
-	
-	std::string query;
-	int adc_value;
-	
-	// Initialize serial connection
-	int fd = serial.open_port();
-	serial.con_init(fd);
-			
-	while (1)
-	{
-		// Read sensor value from serial port
-		if (read(fd, serial.m_buf, serial.BUFFLEN) > 0)
-		{
-			// Convert from ASCII to float
-			adc_value = atof(serial.m_buf);
-			
-			// Convert to various temperatures
-			temp.convert_to_temperature(adc_value);
-			
-			// Send to database
-			query = temp.form_query();
-			sql.send_query(query);
-		}
-		else
-		{
-			std::cerr << "Error reading serial port!" << std::endl;
-		}
-				
-		usleep(500000); // 500 ms delay
-	}
-		
-	// Close port
-	close(fd);
+    Database sql("tcp://192.168.10.48:3306", "root", "", "home_automation");
+    Serial serial(B9600);
+    RF_Module RF;
+    
+    IO_Init();
+    RF.Init();
+    
+    // Initialize serial connection
+    serial.OpenPort();
+    serial.Init();
+    int ser_fd = serial.fd();
+    
+    while (1)
+    {
+        RF.SetTransmissionMode();
+        if (!write(ser_fd, "ABC", 3))
+        {
+            std::cerr << "Error writing serial port!\nerrno:" << errno << std::endl;
+        }
+    
+        RF.SetReceiverMode();
+        if (read(ser_fd, serial.m_buf, serial.BUFFLEN) > 0)
+        {
+            std::cout << "Serial data: " << serial.m_buf << std::endl;
+        }
+        else
+        {
+            std::cerr << "Error reading serial port!\nerrno:" << errno << std::endl;
+        }
+        
+        usleep(10000); // 10 ms delay
+    }
+    	
+    close(ser_fd);
+    
 	return 0;
 }

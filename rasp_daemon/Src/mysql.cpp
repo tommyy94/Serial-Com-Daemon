@@ -10,7 +10,7 @@ Database::Database(std::string host, std::string user, std::string pw, std::stri
 }
 
 
-void Database::con_init(void)
+void Database::Init(void)
 {
 	try
 	{
@@ -22,14 +22,14 @@ void Database::con_init(void)
 	}
 	catch (sql::SQLException &e)
 	{
-		exception_handler(e);
+		ExceptionHandler(e);
 	}
 }
 
 
-void Database::send_query(std::string query)
+void Database::SendQuery(std::string query)
 {
-	con_init();
+	Init();
 	
 	try
 	{
@@ -38,7 +38,7 @@ void Database::send_query(std::string query)
 	}
 	catch(sql::SQLException &e)
 	{
-		exception_handler(e);
+		ExceptionHandler(e);
 	}
 	
 	delete m_stmt;
@@ -46,12 +46,21 @@ void Database::send_query(std::string query)
 }
 
 
-void Database::exception_handler(sql::SQLException &e)
+void Database::ExceptionHandler(sql::SQLException &e)
 {
 	std::cout << "# ERR: SQLException in " << __FILE__;
 	std::cout << "(" << __FUNCTION__ << ") on line " << __LINE__ << std::endl;
 	std::cout << "# ERR: " << e.what();
 	std::cout << " (MySQL error code: " << e.getErrorCode();
 	std::cout << ", SQLState: " << e.getSQLState() << " )" << std::endl;
-	exit(EXIT_FAILURE);
+    std::exit(EXIT_FAILURE);
+}
+
+
+void Database::FormQuery(void)
+{
+//    std::string query = "INSERT INTO temperature (celsius, fahrenheit, kelvin) VALUES (%f, %f, %f)";
+//    boost::format fmt = boost::format(query) % m_celsius % m_fahrenheit % m_kelvin;
+//    std::string full_query = fmt.str();
+//    return full_query;
 }

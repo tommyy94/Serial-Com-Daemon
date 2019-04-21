@@ -7,27 +7,27 @@ Serial::Serial(int baud_rate)
 }
 
 
-int Serial::open_port(void)
+void Serial::OpenPort(void)
 {
 	int fd = open(dev_tty, O_RDWR);
 	if (fd == -1)
 	{
 		perror(dev_tty);
-		exit(EXIT_FAILURE);
+    	std::exit(EXIT_FAILURE);
 	}
 	
-	return fd;
+	m_fd = fd;
 }
 
 
-void Serial::con_init(int fd)
+void Serial::Init()
 {
 	struct termios tios;
-	tcgetattr(fd, &tios);
+	tcgetattr(m_fd, &tios);
 	tios.c_iflag = IGNBRK | IGNPAR;
 	tios.c_oflag = 0;
 	tios.c_lflag = 0;
 	cfsetspeed(&tios, m_baud_rate);
-	tcsetattr(fd, TCSAFLUSH, &tios);
+	tcsetattr(m_fd, TCSAFLUSH, &tios);
 	sleep(1);
 }
