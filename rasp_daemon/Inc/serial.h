@@ -17,7 +17,7 @@ private:
     int m_fd;
 	
 public:
-	constexpr static int BUFFLEN = 4;
+	constexpr static int BUFFLEN = 32;
 	char m_buf[BUFFLEN] = "";
 	
 	Serial(int baud_rate);

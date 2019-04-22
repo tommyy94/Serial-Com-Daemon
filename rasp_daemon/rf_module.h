@@ -32,7 +32,6 @@ public:
 };
 
 
-
 /* Global variables */
 
 /* Global function prototypes */

@@ -4,37 +4,37 @@
 //
 // Set up a memory regions to access GPIO
 //
-void IO_Init()
+void MapPeripheral(struct BCM2835_Peripheral *p)
 {
-    int  mem_fd;
-    void *gpio_map;
-    
-    /* open /dev/mem */
-    if ((mem_fd = open("/dev/mem", O_RDWR | O_SYNC)) < 0)
+    // open /dev/mem
+    if ((p->mem_fd = open("/dev/mem", O_RDWR | O_SYNC)) < 0)
     {
         std::cout << "Can't open /dev/mem\nerrno: " << errno << std::endl;
         std::exit(EXIT_FAILURE);
     }
 
-    /* mmap GPIO */
-    gpio_map = mmap(
-       NULL,                                //Any adddress in will do
-       BLOCK_SIZE,                          //Map length
-       PROT_READ | PROT_WRITE,              //Enable reading & writing to mapped memory
-       MAP_SHARED,                          //Shared with other processes
-       mem_fd,                              //File to map
-       GPIO_BASE                            //Offset to GPIO peripheral
+    // mmap GPIO
+    p->map = mmap(
+       NULL,                                // Any adddress in will do
+       BLOCK_SIZE,                          // Map length
+       PROT_READ | PROT_WRITE,              // Enable reading & writing to mapped memory
+       MAP_SHARED,                          // Shared with other processes
+       p->mem_fd,                           // File descriptor to file /dev/mem
+       p->addr_p                            // GPIO peripheral address
     );
 
-    close(mem_fd);                          //Close mem_fd after mmap
-
-    if(gpio_map == MAP_FAILED)
+    if(p->map == MAP_FAILED)
     {
-        std::cout << "mmap error " << (int)gpio_map << "\nerrno: " << errno << std::endl;
+        std::cout << "mmap error " << (int)p->map << "\nerrno: " << errno << std::endl;
         std::exit(-1);
     }
 
-    // Always use volatile pointer!
-    gpio = (volatile unsigned *)gpio_map;
+    p->addr = (volatile unsigned int *)p->map;
+}
 
-} // setup_io
+
+void UnmapPeripheral(struct BCM2835_Peripheral *p)
+{
+    munmap(p->map, BLOCK_SIZE);
+    close(p->mem_fd);
+}

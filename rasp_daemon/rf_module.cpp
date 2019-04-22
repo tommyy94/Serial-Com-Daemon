@@ -41,6 +41,7 @@ void RF_Module::Init(void)
     /* Set ALT0 (RX) for GPIO14 */
     INP_GPIO(DATA_OUT);
     SET_GPIO_ALT(DATA_OUT, 0);
+    
     /* Set ALT0 (TX) for GPIO15 */
     INP_GPIO(DATA_IN);
     SET_GPIO_ALT(DATA_IN, 0);
@@ -49,6 +50,7 @@ void RF_Module::Init(void)
 }
 
 
+/* Not used since receiver needs to be ON 24/7 */
 /* Power consumption 1.2 uA */
 void RF_Module::SetPowerdownMode(void)
 {
@@ -67,7 +69,7 @@ void RF_Module::SetIdleMode(void)
 }
 
 
-/* Power consumption 11.5 mA */
+/* Power consumption 16.2 mA */
 void RF_Module::SetTransmissionMode(void)
 {
     if (CurrentMode == POWERDOWN_MODE)
@@ -88,7 +90,7 @@ void RF_Module::SetTransmissionMode(void)
     }
     else
     {
-        std::cout << "Error switching RF mode\n" << std::endl;
+        std::cerr << "Error switching RF mode\n" << std::endl;
         std::exit(EXIT_FAILURE);
     }
     
@@ -131,7 +133,7 @@ void RF_Module::SetReceiverMode(void)
     }
     else
     {
-        std::cout << "Error switching RF mode\n" << std::endl;
+        std::cerr << "Error switching RF mode\n" << std::endl;
         std::exit(EXIT_FAILURE);
     }
     
