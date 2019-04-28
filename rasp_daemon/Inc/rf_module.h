@@ -14,13 +14,12 @@
 #include "io.h"
 
 
-#define DELAY_NS(ns)            ((const struct timespec[]){ { 0, (ns) } }, NULL);
-
-
 class RF_Module
 {
 private:
     uint8_t CurrentMode;
+    struct timespec SleepTime;
+    void DelayNs(unsigned int ns);
     
 public:
     RF_Module(void) {};

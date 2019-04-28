@@ -14,9 +14,9 @@ bool CyclicRedundancyCheck::VerifyData(std::string serial_buf)
     std::string checksum;
     std::string msg;
     bool result;
-    int calcCrc32;
-    
-    int crc32_pos = serial_buf.find("crc32:");
+    unsigned int msgCrc32;
+    unsigned int calcCrc32 = 0;
+    unsigned int crc32_pos = serial_buf.find("crc32:");
     
     /* Get message and CRC */
     if (crc32_pos != std::string::npos)
@@ -37,7 +37,7 @@ bool CyclicRedundancyCheck::VerifyData(std::string serial_buf)
             std::cerr << "Integer out of range!" << std::endl;
         }
         
-        int msgCrc32 = GetCrc32(&msg[0], msg.length());
+        msgCrc32 = GetCrc32(&msg[0], msg.length());
     
         if (msgCrc32 == calcCrc32)
         {

@@ -68,9 +68,9 @@ void RF_Module::SetTransmissionMode(void)
     if (CurrentMode == POWERDOWN_MODE)
     {
         GPIO_SET = (1 << ENABLE);
-        DELAY_NS(20000UL);
+        DelayNs(20000UL);
         GPIO_SET = (1 << TXRX);
-        DELAY_NS(400000UL);
+        DelayNs(400000UL);
     }
     else if (CurrentMode == IDLE_MODE)
     {
@@ -79,7 +79,7 @@ void RF_Module::SetTransmissionMode(void)
     else if (CurrentMode == RECEIVER_MODE)
     {
         GPIO_SET = (1 << TXRX);
-        DELAY_NS(400000UL);
+        DelayNs(400000UL);
     }
     else
     {
@@ -97,15 +97,15 @@ void RF_Module::SetReceiverMode(void)
     if (CurrentMode == POWERDOWN_MODE)
     {
         GPIO_SET = (1 << ENABLE);
-        DELAY_NS(200000UL);
+        DelayNs(200000UL);
         GPIO_SET = (1 << TXRX);
-        DELAY_NS(200000UL);
+        DelayNs(200000UL);
         GPIO_CLR = (1 << TXRX);
-        DELAY_NS(40000UL);
+        DelayNs(40000UL);
         GPIO_CLR = (1 << ENABLE);
-        DELAY_NS(20000UL);
+        DelayNs(20000UL);
         GPIO_SET = (1 << ENABLE);
-        DELAY_NS(200000UL);
+        DelayNs(200000UL);
     }
     else if (CurrentMode == IDLE_MODE)
     {
@@ -115,14 +115,14 @@ void RF_Module::SetReceiverMode(void)
     else if (CurrentMode == TRANSMISSION_MODE)
     {
         /* Make sure TX is done */
-        DELAY_NS(3000000UL);
+        DelayNs(3000000UL);
         
         GPIO_CLR = (1 << TXRX);
-        DELAY_NS(40000UL);
+        DelayNs(40000UL);
         GPIO_CLR = (1 << ENABLE);
-        DELAY_NS(20000UL);
+        DelayNs(20000UL);
         GPIO_SET = (1 << ENABLE);
-        DELAY_NS(200000UL);
+        DelayNs(200000UL);
     }
     else
     {
@@ -131,4 +131,12 @@ void RF_Module::SetReceiverMode(void)
     }
     
     CurrentMode = RECEIVER_MODE;
+}
+
+
+void RF_Module::DelayNs(unsigned int ns)
+{
+    SleepTime.tv_sec = 0;
+    SleepTime.tv_nsec = ns;
+    nanosleep(&SleepTime, NULL);
 }
