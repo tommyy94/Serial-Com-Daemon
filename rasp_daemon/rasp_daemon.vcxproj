@@ -48,6 +48,7 @@
       <AdditionalOptions />
       <CLanguageStandard />
       <CPPLanguageStandard />
+      <Optimization>Og</Optimization>
     </ClCompile>
     <Link>
       <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
@@ -65,6 +66,7 @@
     <None Include="rasp_daemon-Release.vgdbsettings" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="crc.h" />
     <ClInclude Include="Inc\daemonize.h" />
     <ClInclude Include="Inc\main.h" />
     <ClInclude Include="Inc\mysql.h" />
@@ -73,6 +75,7 @@
     <ClInclude Include="rf_module.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="crc.cpp" />
     <ClCompile Include="io.cpp" />
     <ClCompile Include="rf_module.cpp" />
     <ClCompile Include="Src\daemonize.cpp" />

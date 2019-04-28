@@ -23,7 +23,7 @@ private:
     uint8_t CurrentMode;
     
 public:
-    RF_Module(void);
+    RF_Module(void) {};
     void Init(void);
     void SetPowerdownMode(void);
     void SetIdleMode(void);

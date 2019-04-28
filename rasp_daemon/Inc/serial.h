@@ -13,15 +13,19 @@ class Serial
 {
 private:
 	const char *dev_tty = "/dev/ttyAMA0";
-	int m_baud_rate;
+	int m_BaudRate;
     int m_fd;
 	
 public:
-	constexpr static int BUFFLEN = 32;
-	char m_buf[BUFFLEN] = "";
+	constexpr static int BUFFLEN = 64;
+	char m_buffer[BUFFLEN] = "";
 	
 	Serial(int baud_rate);
 	void OpenPort(void);
 	void Init(void);
     int fd(void) const { return m_fd; }
+    void ClearBuffer(void);
+    std::string ReadPort(void);
+    void WritePort(std::string data);
+    void ClosePort(void);
 };

@@ -18,13 +18,6 @@ enum OperationalModes
 };
 
 
-/* Function descriptions */
-RF_Module::RF_Module(void)
-{
-    
-}
-
-
 /**
  * Initialize pins used for RF module.
  */

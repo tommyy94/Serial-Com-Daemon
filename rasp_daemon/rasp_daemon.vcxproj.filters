@@ -44,6 +44,9 @@
     <ClInclude Include="io.h">
       <Filter>Header files</Filter>
     </ClInclude>
+    <ClInclude Include="crc.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\daemonize.cpp">
@@ -62,6 +65,9 @@
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="io.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="crc.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>
